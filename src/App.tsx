@@ -7,6 +7,7 @@ import { Account, Auth, Home, Products, SingleProduct } from "./pages";
 
 function App() {
   useHandleProducts();
+
   return (
     <Background>
       <Routes>
