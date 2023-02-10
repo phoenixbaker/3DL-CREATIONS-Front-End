@@ -2,7 +2,7 @@ import { create } from "apisauce";
 import { getAuthToken } from "../utils/AuthTokens";
 
 const apiClient = create({
-  baseURL: "http://api.3dlcreations.com",
+  baseURL: "http://api.3dlcreations.com/",
 });
 
 apiClient.addAsyncRequestTransform(async (req) => {
