@@ -5,25 +5,16 @@ import Stock from "./Stock";
 import Price from "./Price";
 import Size from "./Size";
 import Tags from "./Tags";
+import Sort from "./Sort";
 import { getFilter } from "../../../../api/filter";
+import useProducts from "../../../../hooks/useProducts";
 
-export type FilterType = {
-  price: number[];
-  stock: string[];
-  size: number[];
-  tags: string[];
-};
-
-type FilterMenuType = {
-  setFilterSearch: (res: FilterType) => void;
-};
-
-export default function FilterMenu({ setFilterSearch }: FilterMenuType) {
-  const [filter, setFilter] = useState<FilterType>({} as FilterType);
-  const [selected, setSelected] = useState<FilterType>({} as FilterType);
+export default function FilterMenu() {
+  const { filter, setFilter, selectedFilter, setSelectedFilter } =
+    useProducts();
   const [toggle, setToggle] = useState(false);
   const [load, setLoad] = useState(
-    !!Object.values(selected).filter((filter) => filter !== null).length
+    !!Object.values(selectedFilter).filter((filter) => filter !== null).length
   );
 
   useEffect(() => {
@@ -32,7 +23,7 @@ export default function FilterMenu({ setFilterSearch }: FilterMenuType) {
       if (!ok) return console.warn(problem);
       if (data) {
         setFilter({ ...data, stock: ["All", "In Stock", "Print On Demand"] });
-        setSelected({ ...data, stock: ["All"], tags: ["All Tags"] });
+        setSelectedFilter({ ...data, stock: "All", tags: ["All Tags"] });
         setLoad(true);
       }
     };
@@ -40,66 +31,43 @@ export default function FilterMenu({ setFilterSearch }: FilterMenuType) {
     fetchFilter();
   }, []);
 
-  useEffect(() => {
-    setFilterSearch(selected);
-  }, [selected]);
-
   return (
     <div
       id="Filter"
-      className="flex flex-col w-3/4 mx-12 items-center col-span-3 h-fit shadow-md"
+      className="flex flex-col w-3/4 mx-12 bg-white items-center col-span-3 h-fit shadow-md"
     >
-      <Header
-        onClick={() => setToggle((prev) => !prev)}
-        handleReset={() => {
-          setToggle(true);
-          setSelected({ ...filter, stock: ["All"], tags: ["All Tags"] });
-        }}
-      />
-      {!toggle && load && (
+      <Header />
+      {load && (
         <>
-          <Price
-            data={filter.price}
-            selected={selected.price}
-            setRange={(e) =>
-              setSelected((prevObj) => ({
-                ...prevObj,
-                price: e,
-              }))
-            }
-          />
-          <Tags
-            data={filter.tags}
-            selected={selected.tags}
-            setSelected={(e) =>
-              setSelected((prevObj) => ({
-                ...prevObj,
-                tags: e,
-              }))
-            }
-          />
-          <Stock
-            data={filter.stock}
-            selected={selected.stock}
-            setStock={(e) =>
-              setSelected((prevObj) => ({
-                ...prevObj,
-                stock: [e],
-              }))
-            }
-          />
+          <Price />
+          <Tags />
+          <Stock />
           <Size
             data={filter.size}
-            selected={selected.size}
+            selected={selectedFilter.size}
             setRange={(e) =>
-              setSelected((prevObj) => ({
+              setSelectedFilter((prevObj) => ({
                 ...prevObj,
                 size: e,
               }))
             }
           />
+          <button
+            onClick={() => {
+              setToggle(true);
+              setSelectedFilter({
+                ...filter,
+                stock: "All",
+                tags: ["All Tags"],
+              });
+            }}
+            className="my-2 w-1/3 rounded-full z-20 p-3 mb-6 bg-primary-blue text-white font-bold"
+          >
+            RESET FILTER
+          </button>
         </>
       )}
+      <Sort />
     </div>
   );
 }

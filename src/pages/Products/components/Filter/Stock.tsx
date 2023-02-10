@@ -1,24 +1,21 @@
 import DropDownSelect from "../../../../components/MaterialUI/DropDownSelect";
+import useProducts from "../../../../hooks/useProducts";
 
-type InStockSectionType = {
-  setStock: (res: string) => void;
-  data: string[];
-  selected: string[];
-};
-
-export default function InStockSection({
-  data,
-  setStock,
-  selected,
-}: InStockSectionType) {
+export default function InStockSection() {
+  const { filter, selectedFilter, setSelectedFilter } = useProducts();
   return (
-    <div className="flex flex-col w-full items-center bg-white p-4 px-8 ">
+    <div className="flex flex-col w-full items-center bg-white p-4 px-12 ">
       <div className="w-full bg-white text-xl">In Stock</div>
       <DropDownSelect
         label="Stock"
-        selectors={data.map((e) => ({ value: e }))}
-        value={selected[0]}
-        setStock={setStock}
+        selectors={filter.stock.map((e) => ({ value: e }))}
+        value={selectedFilter.stock}
+        setData={(e) =>
+          setSelectedFilter((prevObj) => ({
+            ...prevObj,
+            stock: e,
+          }))
+        }
       />
     </div>
   );

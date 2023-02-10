@@ -6,11 +6,21 @@ import {
   useMemo,
   useState,
 } from "react";
-import { ProductObjectType } from "../config/types/Product";
+import {
+  ProductObjectType,
+  FilterType,
+  SelectedFilterType,
+} from "../config/types/Product";
 
 type ProductContextType = {
   products: ProductObjectType;
   setProducts: Dispatch<SetStateAction<ProductObjectType>>;
+  filter: FilterType;
+  setFilter: Dispatch<SetStateAction<FilterType>>;
+  selectedFilter: SelectedFilterType;
+  setSelectedFilter: Dispatch<SetStateAction<SelectedFilterType>>;
+  sortBy: string;
+  setSortBy: Dispatch<SetStateAction<string>>;
 };
 
 export const ProductContext = createContext<ProductContextType>(
@@ -27,7 +37,28 @@ export const ProductContextProvider = ({
   const [products, setProducts] = useState<ProductObjectType>(
     {} as ProductObjectType
   );
-  const value = useMemo(() => ({ products, setProducts }), [products]);
+
+  const [selectedFilter, setSelectedFilter] = useState<SelectedFilterType>(
+    {} as SelectedFilterType
+  );
+
+  const [sortBy, setSortBy] = useState<string>("Relevance");
+
+  const [filter, setFilter] = useState<FilterType>({} as FilterType);
+
+  const value = useMemo(
+    () => ({
+      products,
+      setProducts,
+      filter,
+      setFilter,
+      selectedFilter,
+      setSelectedFilter,
+      sortBy,
+      setSortBy,
+    }),
+    [products, filter, selectedFilter, sortBy]
+  );
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );

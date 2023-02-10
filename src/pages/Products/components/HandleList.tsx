@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import {
+  FilterType,
   ProductObjectType,
   ProductUnitType,
+  SelectedFilterType,
 } from "../../../config/types/Product";
+import useProducts from "../../../hooks/useProducts";
 import handleFilter from "../utils/handleFilter";
-import { FilterType } from "./Filter";
 
 import ProductUnit from "./ProductUnit";
 
 type handleListProps = {
   products: ProductObjectType;
-  filter: FilterType;
 };
 
-export default function HandleList({ products, filter }: handleListProps) {
+export default function HandleList({ products }: handleListProps) {
+  const { selectedFilter, sortBy } = useProducts();
   const [res, setRes] = useState<ProductUnitType[]>([]);
 
   useEffect(() => {
-    setRes(handleFilter({ products, filter }));
-  }, [filter, products]);
+    setRes(handleFilter({ products, filter: selectedFilter, sortBy }));
+  }, [selectedFilter, products, sortBy]);
 
   if (!res.length) return <div>No Products Found :(</div>;
   else

@@ -14,3 +14,17 @@ export type ProductUnitType = {
   __v: number;
   _id: string;
 };
+
+export type FilterType = {
+  price: number[];
+  stock: string[];
+  size: number[];
+  tags: string[];
+};
+
+export type SelectedFilterType = {
+  price: number[];
+  stock: string;
+  size: number[];
+  tags: string[];
+};

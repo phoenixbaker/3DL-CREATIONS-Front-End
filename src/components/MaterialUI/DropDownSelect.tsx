@@ -16,17 +16,17 @@ interface DropDownSelectType {
   label: string;
   selectors: Array<SelectorType>;
   value: string;
-  setStock: (res: string) => void;
+  setData: (res: string) => void;
 }
 
 export default function DropDownSelect({
   label,
   selectors,
   value,
-  setStock,
+  setData,
 }: DropDownSelectType) {
   function handleChange(e: SelectChangeEvent) {
-    setStock(e.target.value);
+    setData(e.target.value);
   }
 
   return (

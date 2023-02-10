@@ -4,12 +4,11 @@ import { ProductObjectType, ProductUnitType } from "../../config/types/Product";
 
 import useProducts from "../../hooks/useProducts";
 import { SearchBar } from "../../layout";
-import FilterMenu, { FilterType } from "./components/Filter";
+import FilterMenu from "./components/Filter";
 import HandleList from "./components/HandleList";
 
 export default function Products() {
-  const { products } = useProducts();
-  const [filter, setFilter] = useState<FilterType>({} as FilterType);
+  const { products, selectedFilter } = useProducts();
 
   const [result, setResult] = useState<ProductObjectType>(products);
 
@@ -25,9 +24,9 @@ export default function Products() {
         showDropDown={false}
       />
       <div className="grid grid-cols-10 pt-14">
-        <FilterMenu setFilterSearch={(e) => setFilter(e)} />
+        <FilterMenu />
         <div className="grid grid-flow-col auto-cols-max gap-8 col-span-6">
-          <HandleList products={result} filter={filter} />
+          <HandleList products={result} />
         </div>
       </div>
     </section>

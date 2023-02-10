@@ -1,5 +1,6 @@
 import { ApiResponse } from "apisauce";
-import { FilterType } from "../pages/Products/components/Filter";
+import { FilterType } from "../config/types/Product";
+
 import apiClient from "./client";
 
 const baseURL = "/filter";
