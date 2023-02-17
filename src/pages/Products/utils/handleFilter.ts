@@ -43,6 +43,8 @@ export default function handleFilter({
       return res.sort((a, b) => +a.price - +b.price);
     case "Price high to low":
       return res.sort((a, b) => +b.price - +a.price);
+    case "Customer rating":
+      return res.sort((a, b) => +b.ratings.avg - +a.ratings.avg);
     case "Stock":
       return res.sort((a, b) => a.stock.localeCompare(b.stock));
     case "Product (A-Z)":

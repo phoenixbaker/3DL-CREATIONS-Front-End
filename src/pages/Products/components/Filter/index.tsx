@@ -12,7 +12,7 @@ import useProducts from "../../../../hooks/useProducts";
 export default function FilterMenu() {
   const { filter, setFilter, selectedFilter, setSelectedFilter } =
     useProducts();
-  const [toggle, setToggle] = useState(false);
+
   const [load, setLoad] = useState(
     !!Object.values(selectedFilter).filter((filter) => filter !== null).length
   );
@@ -34,7 +34,7 @@ export default function FilterMenu() {
   return (
     <div
       id="Filter"
-      className="flex flex-col w-3/4 mx-12 bg-white items-center col-span-3 h-fit shadow-md"
+      className="flex flex-col w-3/4 mx-12 bg-white items-center col-span-3 h-fit shadow-lg"
     >
       <Header />
       {load && (
@@ -54,7 +54,6 @@ export default function FilterMenu() {
           />
           <button
             onClick={() => {
-              setToggle(true);
               setSelectedFilter({
                 ...filter,
                 stock: "All",

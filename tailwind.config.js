@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
-        "9/10": "90%",
+        "screen-nav": "calc(100vh - 4rem)",
       },
       colors: {
         "primary-red": "#BA1200",

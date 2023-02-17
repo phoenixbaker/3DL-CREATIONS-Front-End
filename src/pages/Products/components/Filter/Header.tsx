@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <div className=" bg-gray-50 flex justify-between items-center p-4 px-8 w-full">
-      <div className="text-xl font-semibold">Filter</div>
+    <div className=" bg-gray-50 flex w-full flex-col">
+      <div className="text-2xl font-semibold p-4">Filter</div>
     </div>
   );
 }

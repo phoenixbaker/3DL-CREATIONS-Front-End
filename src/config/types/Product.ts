@@ -2,9 +2,24 @@ export interface ProductObjectType {
   [key: string]: ProductUnitType;
 }
 
+export type ReviewType = {
+  by: {
+    _id: string;
+    name: string;
+  };
+  dateCreated: number;
+  lastEdited: number;
+  rating: number;
+  text: string;
+};
+
 export type ProductUnitType = {
   name: string;
   description: string;
+  ratings: {
+    avg: number;
+    posted: ReviewType[];
+  };
   tags: string[];
   images?: string[];
   photos_id: string[];

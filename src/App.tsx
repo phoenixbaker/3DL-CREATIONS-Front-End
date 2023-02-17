@@ -1,12 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import useHandleProducts from "./hooks/useHandleProducts";
+import useSaveUser from "./hooks/useSaveUser";
 
 import { Background } from "./layout";
 import { Account, Auth, Home, Products, SingleProduct } from "./pages";
 
 function App() {
   useHandleProducts();
+  useSaveUser();
 
   return (
     <Background>

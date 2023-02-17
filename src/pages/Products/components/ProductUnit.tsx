@@ -68,6 +68,7 @@ export default function ProductList({ product, className }: ProductListType) {
               <h1 className="text-xs font-light">{product.stock}</h1>
             </div>
           </div>
+          <div></div>
         </div>
       </Link>
     </motion.div>

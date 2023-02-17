@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ProductObjectType, ProductUnitType } from "../../config/types/Product";
 
 import useProducts from "../../hooks/useProducts";
-import { SearchBar } from "../../layout";
+import { Background, SearchBar } from "../../layout";
 import FilterMenu from "./components/Filter";
 import HandleList from "./components/HandleList";
 
@@ -17,13 +17,13 @@ export default function Products() {
   }, [products]);
 
   return (
-    <section className="bg-gray-100 h-screen" id="ProductSection">
+    <section className="bg-gray-50 min-h-screen-nav w-full" id="ProductSection">
       <SearchBar
         placeholder="Search for Product..."
         result={(res) => setResult(res)}
         showDropDown={false}
       />
-      <div className="grid grid-cols-10 pt-14">
+      <div className="grid grid-cols-10 pt-14 h-full">
         <FilterMenu />
         <div className="grid grid-flow-col auto-cols-max gap-8 col-span-6">
           <HandleList products={result} />
