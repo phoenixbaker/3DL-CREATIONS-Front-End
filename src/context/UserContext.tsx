@@ -6,17 +6,8 @@ import {
   useMemo,
   useState,
 } from "react";
-import { ReviewType } from "../config/types/Product";
 
-export type UserType = {
-  name: string;
-  email: string;
-  reviews: ReviewType[];
-  cart: string[];
-  dateCreated: string;
-  lastEdited: string;
-  dev: Boolean;
-};
+import { UserType } from "../config/types/User";
 
 type UserContextType = {
   user: UserType;

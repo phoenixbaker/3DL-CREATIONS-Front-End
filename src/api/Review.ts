@@ -1,4 +1,3 @@
-import { ApiResponse } from "apisauce";
 import apiClient from "./client";
 
 const baseUrl = "/review";

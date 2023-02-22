@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import useAuth from "../../../hooks/useAuth";
 import NavBarLink from "./NavBarLink";
-import { UserType } from "../../../context/UserContext";
+import { UserType } from "../../../config/types/User";
 import { removeAuthToken } from "../../../utils/AuthTokens";
 
 export default function NavBarAccount() {

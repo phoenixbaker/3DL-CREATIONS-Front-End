@@ -1,4 +1,4 @@
-import { UserType } from "../context/UserContext";
+import { UserType } from "../config/types/User";
 import { setAuthToken } from "../utils/AuthTokens";
 import apiClient from "./client";
 
