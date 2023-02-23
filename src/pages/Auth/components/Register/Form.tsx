@@ -32,7 +32,7 @@ export default function Form({ children }: { children: ReactNode }) {
       });
 
     // @ts-ignore
-    postRegister({ ...auth, name: auth.firstName + auth.lastName });
+    postRegister({ ...auth, name: auth.firstName + " " + auth.lastName });
   };
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
