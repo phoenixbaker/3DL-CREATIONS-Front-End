@@ -1,6 +1,6 @@
 import React from "react";
 import { Logo } from "../../../components";
-import ListButton from "../../../components/ListButton";
+import ListButton from "../../../components/ui/ListButton";
 
 export default function SideBar({ className }: { className?: string }) {
   return (

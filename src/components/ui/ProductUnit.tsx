@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
-import { ProductUnitType } from "../../../config/types/Product";
-import useProducts from "../../../hooks/useProducts";
-import { getProductPhotos } from "../../../api/Products";
+import { ProductUnitType } from "../../config/types/Product";
+import useProducts from "../../hooks/useProducts";
+import { getProductPhotos } from "../../api/Products";
 
 interface ProductListType {
   product: ProductUnitType;

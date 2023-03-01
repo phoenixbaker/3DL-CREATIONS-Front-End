@@ -8,7 +8,7 @@ import {
 import useProducts from "../../../hooks/useProducts";
 import handleFilter from "../utils/handleFilter";
 
-import ProductUnit from "./ProductUnit";
+import ProductUnit from "../../../components/ui/ProductUnit";
 
 type handleListProps = {
   products: ProductObjectType;
