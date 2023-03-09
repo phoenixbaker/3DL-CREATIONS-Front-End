@@ -4,8 +4,8 @@ import "./config/index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./context/UserContext";
-import { ProductContextProvider } from "./context/ProductContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { ProductContextProvider } from "./context/ProductContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
