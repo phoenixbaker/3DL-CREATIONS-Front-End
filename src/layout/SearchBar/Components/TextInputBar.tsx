@@ -63,7 +63,7 @@ export default function TextInputBar({
   };
 
   return (
-    <div className="py-6 z-50">
+    <div className="py-6 z-40 w-2/5">
       <div
         ref={searchBarRef}
         id="searchInputs"

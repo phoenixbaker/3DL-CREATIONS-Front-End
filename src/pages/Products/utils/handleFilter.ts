@@ -22,7 +22,7 @@ export default function handleFilter({
   sortBy,
 }: handleListProps): ProductUnitType[] {
   let res: ProductUnitType[];
-  if (!Object.values(filter).length) res = Object.values(products);
+  if (Object.values(filter).length < 2) res = Object.values(products);
   else
     res = Object.values(products).filter(
       (product) =>

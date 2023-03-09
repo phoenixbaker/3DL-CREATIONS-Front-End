@@ -26,9 +26,8 @@ export default function SearchBar({
   }
 
   return (
-    <section className="w-full h-24 bg-gray-200">
-      <div className="grid grid-cols-3 h-full">
-        <Logo className="w-28 h-20 self-center mt-2 ml-12" />
+    <section className="w-full h-24 bg-gray-200 sticky top-[63px] shadow-xl">
+      <div className="flex w-full flex-col items-center h-full">
         <TextInputBar
           placeholder={placeholder}
           data={products}

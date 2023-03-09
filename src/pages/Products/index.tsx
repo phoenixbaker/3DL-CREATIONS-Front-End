@@ -1,23 +1,31 @@
-import { CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { ProductObjectType, ProductUnitType } from "../../config/types/Product";
+import { useLocation } from "react-router-dom";
+import { ProductObjectType } from "../../config/types/Product";
 
 import useProducts from "../../hooks/useProducts";
-import { Background, SearchBar } from "../../layout";
+import { NavBar, SearchBar } from "../../layout";
 import FilterMenu from "./components/Filter";
 import HandleList from "./components/HandleList";
 
 export default function Products() {
-  const { products, selectedFilter } = useProducts();
+  const { products, setSelectedFilter, filter } = useProducts();
+  let location = useLocation();
 
   const [result, setResult] = useState<ProductObjectType>(products);
 
   useEffect(() => {
-    setResult(products);
-  }, [products]);
+    if (location.state?.redirect) {
+      setSelectedFilter((prev) => ({
+        ...prev,
+        tags: [location.state.redirect],
+      }));
+      setResult(products);
+    }
+  }, [products, filter]);
 
   return (
     <section className="bg-gray-50 min-h-screen-nav w-full" id="ProductSection">
+      <NavBar />
       <SearchBar
         placeholder="Search for Product..."
         result={(res) => setResult(res)}

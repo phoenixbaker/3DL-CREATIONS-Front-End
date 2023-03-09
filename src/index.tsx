@@ -5,18 +5,23 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./context/UserContext";
 import { ProductContextProvider } from "./context/ProductContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserContextProvider>
-        <ProductContextProvider>
-          <App />
-        </ProductContextProvider>
-      </UserContextProvider>
-    </BrowserRouter>
+    <GoogleOAuthProvider
+      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ""}
+    >
+      <BrowserRouter>
+        <UserContextProvider>
+          <ProductContextProvider>
+            <App />
+          </ProductContextProvider>
+        </UserContextProvider>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );

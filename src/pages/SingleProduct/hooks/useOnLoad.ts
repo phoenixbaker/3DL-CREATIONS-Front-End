@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getProductPhotos } from "../../../api/Products";
 import { ProductUnitType } from "../../../config/types/Product";
 import useProducts from "../../../hooks/useProducts";

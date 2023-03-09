@@ -1,9 +1,12 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { postAuth } from "../../../../api/auth";
 import useAuth from "../../../../hooks/useAuth";
 import useLogIn from "../../hooks/useLogIn";
 import FormInput from "../FormInput";
+import LogInFacebook from "./LogInFacebook";
+import LogInGoogle from "./LogInGoogle";
 
 export default function LogInForm() {
   let navigate = useNavigate();
@@ -24,6 +27,8 @@ export default function LogInForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+      <LogInGoogle />
+      <LogInFacebook />
       <FormInput label="Email" type="email" val="email" />
       <FormInput label="Password" type="password" val="password" />
       <button
