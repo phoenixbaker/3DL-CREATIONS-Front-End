@@ -16,14 +16,14 @@ import InformationSection from "./components/InformationSection";
 import ReviewSection from "./components/ReviewSection";
 import FAQSection from "./components/FAQSection";
 import SectionSlider from "./components/SectionSlider";
+import Background from "../../layout/Background";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null!);
   const contentRef = useRef<HTMLDivElement>(null!);
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <NavBar className={`bg-primary-dark-blue`} />
+    <Background page="Home">
       <HeroSection ref={ref} contentRef={contentRef} />
       <div
         className="bg-white w-full flex flex-col items-center shadow-inner scroll-m-12"
@@ -36,6 +36,6 @@ export default function Home() {
         <PopularSection />
       </div>
       <Footer />
-    </div>
+    </Background>
   );
 }

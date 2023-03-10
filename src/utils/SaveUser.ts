@@ -1,5 +1,4 @@
 export function saveUser(user: string) {
-  console.log(user);
   return localStorage.setItem("user", user);
 }
 

@@ -14,8 +14,8 @@ import {
 } from "./pages";
 
 function App() {
-  useHandleProducts();
   useSaveUser();
+  useHandleProducts();
 
   return (
     <Routes>

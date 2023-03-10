@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../../components";
 import useAuth from "../../hooks/useAuth";
+import { NavBar } from "../../layout";
 import { Container, LogIn, Register, Switcher } from "./components";
 import { AuthContext } from "./context/AuthenticationContext";
 import { AuthType, ErrorType } from "./types";
@@ -26,6 +27,7 @@ export default function Auth() {
 
   return (
     <AuthContext.Provider value={value}>
+      <NavBar />
       <section className="flex justify-center items-center">
         <Container>
           <Logo className="my-16 h-40 w-48" />

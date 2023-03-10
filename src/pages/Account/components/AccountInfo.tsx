@@ -12,6 +12,8 @@ export default function AccountInfo({ className }: AccountInfoType) {
   let { user } = useAuth();
   let navigate = useNavigate();
 
+  console.log(user);
+
   useEffect(() => {
     if (!user.name?.length) navigate("/");
   }, [user]);
@@ -37,6 +39,7 @@ export default function AccountInfo({ className }: AccountInfoType) {
               id="First Name"
               name="First Name"
               placeholder="First Name"
+              readOnly
               value={user.name}
             />
             <InformationBoxes
@@ -44,6 +47,7 @@ export default function AccountInfo({ className }: AccountInfoType) {
               type="text"
               id="Last Name"
               name="Last Name"
+              readOnly
               placeholder={user.name}
             />
             <InformationBoxes
@@ -51,13 +55,15 @@ export default function AccountInfo({ className }: AccountInfoType) {
               type="email"
               id="Email"
               name="Email"
-              placeholder={user.name}
+              readOnly
+              value={user.email}
             />
             <InformationBoxes
               header="Phone Number"
               type="tel"
               id="Phone Number"
               name="Phone Number"
+              readOnly
               placeholder={user.name}
             />
           </div>
@@ -70,12 +76,15 @@ export default function AccountInfo({ className }: AccountInfoType) {
               type="text"
               id="Address"
               name="Address"
-              placeholder={user.name}
+              readOnly
+              value={user.address?.description}
+              placeholder={user.address?.description}
             />
             <InformationBoxes
               header="Address (line 2)"
               type="text"
               id="Address 2"
+              readOnly
               name="Address 2"
               placeholder={user.name}
             />
@@ -83,6 +92,7 @@ export default function AccountInfo({ className }: AccountInfoType) {
               header="City"
               type="text"
               id="City"
+              readOnly
               name="City"
               placeholder={user.name}
             />
@@ -91,12 +101,14 @@ export default function AccountInfo({ className }: AccountInfoType) {
                 header="State"
                 type="text"
                 id="State"
+                readOnly
                 name="State"
                 placeholder={user.name}
               />
               <InformationBoxes
                 header="Zip/Post Code"
                 type="text"
+                readOnly
                 id="Zip/Post Code"
                 name="Zip/Post Code"
                 placeholder={user.name}
